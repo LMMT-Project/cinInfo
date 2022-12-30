@@ -1,0 +1,33 @@
+name: PHP
+on:
+  push:
+    branches: [ "main" ]
+    paths-ignore:
+      - '**.md'
+      
+  pull_request:
+    branches: [ "main" ]  
+    paths-ignore:
+      - '**.md'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      fail-fast: false
+      matrix:
+        operating-system: [ubuntu-latest, windows-2019]
+        php-versions: ['8.1']
+    
+    steps:
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-versions }}
+        extensions: mbstring
+        ini-values: post_max_size=256M, max_execution_time=180
+        coverage: xdebug
+        tools: php-cs-fixer, phpunit
