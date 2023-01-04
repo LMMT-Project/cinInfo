@@ -99,7 +99,8 @@ class CoreController
     /**
      * @throws \CMW\Router\RouterException
      */
-    #[Link('/', Link::GET)]
+    #[Link('/', Link::GET, name: "coreDefaultPage")]
+    #[Link('/home-page', Link::GET)]
     public function frontHome(): void
     {
         $view = new View("core", "home");
