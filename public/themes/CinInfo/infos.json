@@ -1,0 +1,8 @@
+{
+  "author": "LMMT Team",
+  "authors": ["Mehdi", "Théo", "Mattéo"],
+  "name": "CinInfo",
+  "version": "1.0",
+  "cmwVersion": "2.0",
+  "packages": ["core", "pages", "users"]
+}

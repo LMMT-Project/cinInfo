@@ -60,7 +60,7 @@ class UsersController extends CoreController
         return UsersModel::hasPermission(self::getSessionUser(), ...$permissions);
     }
 
-    private static function getSessionUser(): ?UserEntity
+    public static function getSessionUser(): ?UserEntity
     {
         if (!isset($_SESSION['cmwUserId'])) {
             return null;

@@ -1,0 +1,238 @@
+:root {
+    --active: #00f;
+    --active-two: #0000B3;
+    --white: #d8d8d8;
+
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    font-family: Roboto, serif;
+}
+
+h1 {
+color: var(--active);
+}
+
+h3 {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    font-size: 24px;
+}
+
+h4 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    line-height: 1.375rem;
+}
+
+.btn {
+    border-radius: 0.1875rem;
+    border-width: 0.0625rem;
+    box-shadow: 0 0.1875rem 0.9375rem rgb(0 0 0 / 15%);
+    font-size: .9375rem;
+    padding: 0.5rem 1.25rem;
+    position: relative;
+    outline: none !important;
+    cursor: pointer;
+    margin: 1rem 0;
+}
+
+.btn-primary {
+    background-color: var(--active);
+    border-color: var(--active);
+    color: var(--white);
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.map-container {
+    position: relative;
+}
+
+.basemap#map {
+    width: 100vw;
+    height: calc(100vh - 80px);
+}
+
+.control-map-buttons {
+    z-index: 400;
+    position: absolute;
+    padding: 1rem;
+    top: 100px;
+    left: .6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#result-list {
+    width: 100%;
+    position: absolute;
+    z-index: 400;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    background-color: #f6f6f6;
+    overflow-x: auto;
+}
+
+.cine-card {
+    background: #fff;
+    box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 10%);
+    border-radius: 0.1875rem;
+    position: relative;
+    transition: .3s ease;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    height: 100%;
+    min-width: fit-content;
+    padding: .5rem;
+    margin: .4rem .2rem 0;
+    cursor: pointer;
+}
+
+.cine-card:hover, .cine-card:focus, .cine-card:active {
+    box-shadow: 0 0.3125rem 1.5625rem rgb(0 0 0 / 25%);
+    color: inherit;
+    -webkit-transform: translateY(-0.3125rem);
+    transform: translateY(-0.3125rem);
+}
+
+.cine-card-info-value {
+    color: #191919;
+    cursor: pointer;
+}
+
+header {
+    z-index: 400;
+    position: relative;
+    height: 80px;
+    box-shadow: 0 0.125rem 0.3125rem rgb(0 0 0 / 10%);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #F4F4F4;
+}
+
+h1 {
+    font-size: 42px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar a, .profil a {
+    font-size: 20px;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+    transition: all .2s;
+
+}
+
+.navbar a:hover, .profil a:hover  {
+    text-decoration: underline;
+}
+
+.container{
+    margin: 100px;
+    background-color: white;
+    padding: 40px;
+}
+
+.container h2{
+    color: var(--active);
+}
+
+input.login-input[type="text"], input.login-input[type="password"], input.login-input[type="email"]{
+    width: 100%;
+    box-sizing: border-box;
+    margin: 15px 0px;
+    padding: 12px 20px;
+}
+
+.btn-login{
+    margin: 15px 0px;
+    padding: 20px;
+    font-size: 18px;
+    width: 100%;
+    background-color: var(--active);
+    color: whitesmoke;
+    border: none;
+}
+
+
+
+.cinema-information-title{
+    font-weight: 700;
+    font-size: 150%;
+}
+
+.cinema-title {
+    width: 60%;
+    margin: 40px auto 100px auto;
+}
+
+.cinema-name {
+    font-size: 48px;
+}
+
+.cinema-adress {
+    font-size: 24px;
+}
+
+.cinema-information-container {
+    position: relative;
+    width: fit-content;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cinema-information {
+    background-color: white;
+    border-right: 1px solid black;
+
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cinema-information:nth-child(2) {
+    border-radius: 6px 0 0 6px;
+}
+
+.cinema-information:last-child {
+    border-right: none;
+    border-radius: 0 6px 6px 0;
+}
+
+.map-container-cineinfo {
+    position: relative;
+    width: fit-content;
+    margin: 100px auto;
+}
+
+#map {
+    width: 1200px;
+    height: 800px;
+}
