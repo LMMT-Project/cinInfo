@@ -85,6 +85,16 @@ $description = "";
             replaceValue("movies-prog", nombre_de_films_programmes)
             replaceValue("movies-new", nombre_de_films_inedits)
             replaceValue("is-multiplex", multiplexe)
+            return;
         }
+
+        replaceValue("name", "Cinéma inexistant")
+        replaceValue("address", ``)
+        replaceValue("proprietaire", "NaN")
+        replaceValue("screen", "NaN")
+        replaceValue("seat", "NaN")
+        replaceValue("movies-prog", "NaN")
+        replaceValue("movies-new", "NaN")
+        replaceValue("is-multiplex", "NaN")
     })
 </script>
