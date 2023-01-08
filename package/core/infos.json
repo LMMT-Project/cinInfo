@@ -1,0 +1,60 @@
+{
+  "name": "core",
+  "menus": [
+    {
+      "name_menu_fr": "Général",
+      "name_menu_en": "General",
+      "icon_menu": "fas fa-th",
+      "url_menu": "",
+      "urls_submenu_fr": {
+        "Configuration": "configuration",
+        "Sécurité": "security",
+        "Mises à jours": "updates/cms"
+      },
+      "urls_submenu_en": {
+        "Configuration": "configuration",
+        "Security": "security",
+        "Updates": "updates/cms"
+      }
+    },
+    {
+      "name_menu_fr": "Mails",
+      "name_menu_en": "Mails",
+      "icon_menu": "fas fa-envelope",
+      "url_menu": "mail/configuration"
+    },
+    {
+      "name_menu_fr": "Menus",
+      "name_menu_en": "Menus",
+      "icon_menu": "fas fa-bars",
+      "url_menu": "menus"
+    },
+    {
+      "name_menu_fr": "Thèmes",
+      "name_menu_en": "Themes",
+      "icon_menu": "fas fa-paintbrush",
+      "url_menu": "",
+      "urls_submenu_fr": {
+        "Configuration": "theme/configuration",
+        "Apparence": "theme/manage"
+      },
+      "urls_submenu_en": {
+        "Configuration": "theme/configuration",
+        "Appearance": "theme/manage"
+      }
+    }
+  ],
+
+  "description": [
+    {
+      "fr": "Gère le coeur du CMS",
+      "en": "Manage CMS core"
+    }
+  ],
+
+  "version": "1.0.0",
+  "author": "CraftMyWebsite Team",
+
+  "isGame": false,
+  "isCore": true
+}
