@@ -45,6 +45,10 @@ $description = "";
 <div class="map-container-cineinfo">
     <h3>Carte</h3>
     <div id="map"></div>
+    <div class="control-map-buttons">
+        <button class="btn btn-primary w-100" id="centerMapBtn">Centrer</button>
+        <button class="btn btn-primary w-100" id="goOnMeMapBtn">Moi</button>
+    </div>
 </div>
 
 <script>
@@ -58,14 +62,71 @@ $description = "";
     const startLoc = [46.65, 2.68];
     const startZoom = 6;
 
-    const map = L.map('map', {zoomControl: false});
+    let cineIconOpen = L.icon({
+        iconUrl: "/public/themes/CinInfo/resources/assets/icons/cine-icon-open.png",
+        iconSize: [50, 50],
+        iconAnchor: [25, 25],
+        popupAnchor: [0, -25]
+    });
+    let cineIconClose = L.icon({
+        iconUrl: "/public/themes/CinInfo/resources/assets/icons/cine-icon-close.png",
+        iconSize: [50, 50],
+        iconAnchor: [25, 25],
+        popupAnchor: [0, -25]
+    });
+    let userIcon = L.icon({
+        iconUrl: "/public/themes/CinInfo/resources/assets/icons/user-icon.png",
+        iconSize: [80, 80],
+        iconAnchor: [40, 40],
+        popupAnchor: [0, -40]
+    });
+
+    const map = L.map('map');
     map.setView(startLoc, startZoom);
-    map.scrollWheelZoom.disable();
-    map.doubleClickZoom.disable();
-    map.dragging.disable();
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
+
+    document.getElementById("centerMapBtn").addEventListener("click", () => {
+        map.setView(startLoc, startZoom);
+    });
+
+    let userPosition;
+
+    function successGetUserPosition(position) {
+        userPosition = [position.coords.latitude, position.coords.longitude];
+        let marker = L.marker(userPosition, {icon: userIcon})
+            .bindPopup(`<p style="font-weight: bold;">VOUS ÊTES ICI !</p>`);
+        marker.addEventListener("click", () => {
+            map.setView(userPosition, 18);
+        });
+        marker.addEventListener("mouseover", () => {
+            marker.openPopup();
+        });
+        marker.addEventListener("mouseout", () => {
+            marker.closePopup();
+        });
+        marker.addTo(map);
+
+        document.getElementById("goOnMeMapBtn").addEventListener("click", () => {
+            map.setView(userPosition, 18);
+        });
+        document.getElementById("goOnMeMapBtn").addEventListener("mouseover", () => {
+            marker.openPopup();
+        });
+        document.getElementById("goOnMeMapBtn").addEventListener("mouseout", () => {
+            marker.closePopup();
+        });
+    }
+
+    function errorGetUserPosition(error) {
+        console.log(error);
+    }
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(successGetUserPosition, errorGetUserPosition);
+    }
+
 
     const link = `https://data.culture.gouv.fr/api/records/1.0/search/?dataset=etablissements-cinematographiques&q=recordid%3D<?= $cineInfo ?>&rows=10&facet=region_administrative&facet=genre&facet=multiplexe&facet=zone_de_la_commune`
 
@@ -73,7 +134,16 @@ $description = "";
         console.log(json)
         if(json?.records[0]?.fields) {
             const cine = json.records[0];
-            L.marker(cine.fields.geolocalisation).addTo(map);
+            let marker = L.marker(cine.fields.geolocalisation, {icon: cineIconOpen}).addTo(map);
+            marker.addEventListener("click", () => {
+                map.setView(cine.fields.geolocalisation, 18);
+            });
+            marker.addEventListener("mouseover", () => {
+                marker.setIcon(cineIconClose);
+            });
+            marker.addEventListener("mouseout", () => {
+                marker.setIcon(cineIconOpen);
+            });
 
             const {nom, adresse, commune, proprietaire, ecrans, fauteuils, nombre_de_films_programmes, nombre_de_films_inedits, multiplexe} = cine.fields;
 

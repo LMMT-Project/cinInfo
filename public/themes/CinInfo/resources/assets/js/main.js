@@ -89,7 +89,7 @@ function capitalizeFirstLetter(string) {
 
 function createCineCard(cinema) {
     let cineCardHTML = `
-        <div class="cine-card" id="${capitalizeFirstLetter(cinema.recordid)}">
+        <div class="cine-card" id="${cinema.recordid}">
                 <h4 class="cine-card-info-value" style="text-align: center">${capitalizeFirstLetter(cinema.fields.nom)}</h4>
                 <p class="cine-card-info-value"><i class="fa-solid fa-location-pin" style="color: rgba(0, 0, 0, .25)"></i> ${capitalizeFirstLetter(cinema.fields.adresse)}</p>
                 <p class="cine-card-info-value"><i class="fa-solid fa-flag" style="color: rgba(0, 0, 0, .25)"></i> ${cinema.fields.commune}</p>
@@ -114,6 +114,7 @@ function updateResultList() {
         let cineCard = document.getElementById(`${cinema.recordid}`);
         let marker = getMarkerByLatLng(lat, lng);
 
+        console.log(cineCard);
         if (cineCard) {
             cineCard.addEventListener("click", (event) => {
                 map.setView(cinema.fields.geolocalisation, 16);

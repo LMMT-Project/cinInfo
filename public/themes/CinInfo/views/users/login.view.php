@@ -16,7 +16,7 @@ $description = "Connexion"; ?>
             <div class="form">
                 <h2>Se connecter</h2>
                 <form>
-                    <input class="login-input" type="text" name="login_email" placeholder="Username" />
+                    <input class="login-input" type="email" name="login_email" placeholder="Email" />
                     <input class="login-input" type="password" name="login_password" placeholder="Password" />
 
                     <?php SecurityController::getPublicData(); ?>
